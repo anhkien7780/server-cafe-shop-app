@@ -1,0 +1,66 @@
+.apply {
+    runBlocking {
+        if (allProducts().isEmpty()) {
+            addNewProduct(
+                "Package of genuine Delonghi coffee beans 250g",
+                50.5f,
+                "https://product.hstatic.net/200000661969/product/goi_hat_ca_phe_delonghi_chinh_hang_250g_5_70cab7b98fb54b138214e219ea4c5465.png",
+                "Enjoy great light roast coffee with De'Longhi Caffe Crema coffee beans"
+            )
+            addNewProduct(
+                "PREMIUM CENTRAL PLAINS ROASTED BUTTER COFFEE (NO. 4 BEANS) – 3KG BAG",
+                49f,
+                "https://lh4.googleusercontent.com/proxy/6oSkDaMd_yjFZuY_HDjRMz9RvMBhUNzKWwEka9iowIvaqmXLhIF_fUFtulle5aoC_fqa2WTGvJkSk7G41qNOjUDN14ml8k7QqiZLnrncTeQsNQDkCMtkDiaEr2CuNtVQZFQXRd63l7XeShyqfcMtnjWzsL1fGQ",
+                "Premium Culi (No. 4 bean) has water mixed with dark cockroach wings, rich aroma and long last."
+            )
+            addNewProduct(
+                "Premium 1st Grade Pure Coffee (Unique)",
+                22.4f,
+                "https://capherangxay.vn/wp-content/uploads/2018/07/1C6A6740-683x1024.jpg",
+                "Premium Pure Coffee Beans 1 100% Clean Especially has a rich bitter taste, light aroma, medium caffeine, acrid, sweet aftertaste."
+            )
+            addNewProduct(
+                "Pure Arabica Coffee With Avocado - 300gr Pack",
+                12.3f,
+                "https://www.rey.cafe/131-large_default/ca-phe-arabica-nguyen-chat-co-bo-goi-300gr.jpg",
+                "Arabica coffee is also known as tea coffee in Vietnamese. Arabica coffee is a coffee discovered before Robusta, which has a longer history than Robusta"
+            )
+            addNewProduct(
+                "Passion Moka Coffee - 500gr Pack - Pure Moka-Robusta-Loris Nut Ingredients With Butter",
+                6.6f,
+                "https://www.rey.cafe/51-large_default/ca-phe-moka-dam-me-goi-500gr-thanh-phan-hat-moka-robusta-culi-nguyen-chat-co-bo.jpg",
+                "Moka Passion is the perfect combination of the ecstatic aroma of Moka coffee, the rich bitterness of loris coffee and the caffeine richness of Robusta coffee. Moka Passion is an excellent coffee line, both powerful and exuding aroma, sour and bitter taste harmoniously blended."
+            )
+            addNewProduct(
+                "Premium coffee in Nui Street",
+                7f,
+                "https://caphephonui.com/wp-content/uploads/1-5-768x763.jpg",
+                "Coffee is an indispensable beverage in our daily life. With many different types of coffee, premium coffee in the mountain town becomes a favorite choice of coffee lovers and enthusiasts who experience traditional coffee taste."
+            )
+            addNewProduct(
+                "Dak Lak series Gustoso premium pure bean coffee - Specialized for coffee machines",
+                10.4f,
+                "https://product.hstatic.net/1000360575/product/k-chuyen-dung-cho-may-pha-ca-phe-gia-dinh-tu-dong-ban-tu-dong-delonghi_f703be97ed9f4400ac1a531859128cf5_master.png",
+                "Try Gustoso Dak Lak Fine Coffee – 100% Fine Robusta – for an authentic coffee taste"
+            )
+            addNewProduct(
+                "1st Grade Pure Coffee (Passion)",
+                8.5f,
+                "https://caphenguyenchat.vn/wp-content/uploads/2018/07/1C6A6763-640x960.jpg",
+                "1 Fine Nut Pure Coffee 100% Clean Especially has a rich bitter taste, light aroma, medium caffeine, acrid, sweet aftertaste."
+            )
+            addNewProduct(
+                "Drip Coffee 4 – Premium Lori",
+                43f,
+                "https://trungnguyenlegendcafe.net/wp-content/uploads/2021/08/Tem-Hat-4-Culi-Thuong-Hang-3kg-768x763.jpg",
+                "A great coffee for coffee connoisseurs, no matter how busy, no matter how far the shop is, they are ready to \"take effort, lose strength\" to come and enjoy the typical coffee flavor. Coffee here is not just a drink but the enjoyment and experience of the best coffee beans in the world."
+            )
+            addNewProduct(
+                "Davidoff Café Whole Bean Coffee – Espresso 57 500g",
+                15.5f,
+                "https://bizweb.dktcdn.net/thumb/grande/100/013/690/products/cafe-davidoff-hat.jpg?v=1618393678923",
+                "Davidoff Café – Espresso 57 is based on a skillful blend of passionate Arabica coffee beans from the basalt red soil plateaus in Africa, Latin America and Oceania."
+            )
+        }
+    }
+}
