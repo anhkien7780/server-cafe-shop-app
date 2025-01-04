@@ -8,10 +8,6 @@ import java.io.File
 
 fun Application.configureRouting() {
     routing {
-        staticFiles(
-            remotePath = "/avatar/display",
-            dir = File("C:/Users/anhki/Documents/Learn/cafe-shop/src/main/kotlin/com/example/avatarImages")
-        )
         productRouting()
         accountRouting()
         userRoutes()

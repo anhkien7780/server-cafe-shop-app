@@ -1,15 +1,12 @@
 package com.example.routes
 
+import com.example.cloud.CloudService.saveImageToCloudStorage
 import com.example.dao.avatarImageDAOImpl
 import io.ktor.http.*
 import io.ktor.http.content.*
-import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import java.nio.file.Files
-import java.nio.file.Path
-import java.nio.file.Paths
 
 fun Route.avatarImageRoutes() {
     route("/avatar") {
@@ -18,29 +15,20 @@ fun Route.avatarImageRoutes() {
                 "Missing username",
                 status = HttpStatusCode.BadRequest
             )
-            val ipv4NPort = "https://one-definitely-kingfish.ngrok-free.app"
-            val absoluteAvatarFolderPath =
-                "C:/Users/anhki/Documents/Learn/cafe-shop/src/main/kotlin/com/example/avatarImages/"
             val multipart = call.receiveMultipart()
+            var imageUrl: String? = null
             multipart.forEachPart { part ->
-                when (part) {
-                    is PartData.FormItem -> TODO()
-                    is PartData.BinaryChannelItem -> TODO()
-                    is PartData.BinaryItem -> TODO()
-                    is PartData.FileItem -> {
-                        val originalFileName = part.originalFileName ?: System.currentTimeMillis().toString()
-                        val bytes = part.streamProvider().readBytes()
-                        val path: Path =
-                            Paths.get(absoluteAvatarFolderPath + originalFileName)
-                        Files.write(path, bytes)
-                        val relativeImagePath = "/avatar/display/"
-                        val imageUrl =
-                            ipv4NPort + relativeImagePath + originalFileName
-                        avatarImageDAOImpl.addAvatarImage(username = username, url = imageUrl)
-                    }
+                if (part is PartData.FileItem) {
+                    val fileName = part.originalFileName ?: "$username.png"
+                    imageUrl = saveImageToCloudStorage(fileName, part.streamProvider())
                 }
                 part.dispose()
-                call.respondText("Added avatar image", status = HttpStatusCode.OK)
+                if (imageUrl != null) {
+                    avatarImageDAOImpl.addAvatarImage(username = username, url = imageUrl)
+                    call.respondText("Avatar uploaded successfully: $imageUrl")
+                } else {
+                    call.respond(HttpStatusCode.BadRequest, "Failed to upload avatar")
+                }
             }
         }
         post("/change/{username?}") {
@@ -48,29 +36,20 @@ fun Route.avatarImageRoutes() {
                 "Missing username",
                 status = HttpStatusCode.BadRequest
             )
-            val ipv4NPort = "https://one-definitely-kingfish.ngrok-free.app"
-            val absoluteAvatarFolderPath =
-                "C:/Users/anhki/Documents/Learn/cafe-shop/src/main/kotlin/com/example/avatarImages/"
             val multipart = call.receiveMultipart()
+            var imageUrl: String? = null
             multipart.forEachPart { part ->
-                when (part) {
-                    is PartData.FormItem -> TODO()
-                    is PartData.BinaryChannelItem -> TODO()
-                    is PartData.BinaryItem -> TODO()
-                    is PartData.FileItem -> {
-                        val originalFileName = part.originalFileName ?: System.currentTimeMillis().toString()
-                        val bytes = part.streamProvider().readBytes()
-                        val path: Path =
-                            Paths.get(absoluteAvatarFolderPath + originalFileName)
-                        Files.write(path, bytes)
-                        val relativeImagePath = "/avatar/display/"
-                        val imageUrl =
-                            ipv4NPort + relativeImagePath + originalFileName
-                        avatarImageDAOImpl.changeAvatarImage(username = username, url = imageUrl)
-                    }
+                if (part is PartData.FileItem) {
+                    val fileName = part.originalFileName ?: "$username.png"
+                    imageUrl = saveImageToCloudStorage(fileName, part.streamProvider())
                 }
                 part.dispose()
-                call.respondText("Change avatar image", status = HttpStatusCode.OK)
+                if (imageUrl != null) {
+                    avatarImageDAOImpl.changeAvatarImage(username = username, url = imageUrl)
+                    call.respondText("Avatar uploaded successfully: $imageUrl")
+                } else {
+                    call.respond(HttpStatusCode.BadRequest, "Failed to upload avatar")
+                }
             }
         }
         get("/get/{username}") {

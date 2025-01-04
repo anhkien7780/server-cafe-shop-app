@@ -20,6 +20,7 @@ configure<AppEngineAppYamlExtension> {
 plugins {
     kotlin("jvm") version "2.0.0-RC1"
     id("io.ktor.plugin") version "3.0.3"
+    id("com.gradleup.shadow") version "8.3.1"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.24"
     id("com.google.cloud.tools.appengine") version "2.8.0"
 }
@@ -38,16 +39,12 @@ repositories {
     mavenCentral()
 }
 
-ktor {
-    fatJar {
-        archiveFileName.set("fat.jar")
-    }
-}
 
 
 
 dependencies {
     implementation("com.drewnoakes:metadata-extractor:2.16.0")
+    implementation("com.google.cloud:google-cloud-storage:2.19.0")
     implementation("org.jetbrains.exposed:exposed-core:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")

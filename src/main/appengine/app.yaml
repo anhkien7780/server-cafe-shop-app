@@ -1,0 +1,2 @@
+runtime: java21
+entrypoint: 'java -jar com.example.cafe-shop-all.jar'
